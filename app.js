@@ -3,14 +3,14 @@ const height = 400;
     let max;
     let ex;
   let data;
-d3.csv("https://raw.githubusercontent.com/zonination/weather-us/master/atlanta.csv", (d) => {
+d3.csv("atlanta.csv", (d) => {
  	 ex = d.map(element => parseInt(element["Max.TemperatureF"]) ); 
     let rectWidth =  d.length / 1400;
     let height = 500;
      let svg = d3.select("svg");
   	 svg.selectAll("rect").data(d)
      .enter().append("rect")
-     .attr("x", (d,i) => i *  d.length / 1400)
+     .attr("x", (d,i) => i * rectWidth)
      .attr("y", (d, i) => height - ex[i] )
      .attr("height", 120)
      .attr("width",rectWidth)
