@@ -4,15 +4,18 @@ const height = 400;
     let ex;
   let data;
 d3.csv("atlanta.csv", (d) => {
- 	 ex = d.map(element => parseInt(element["Max.TemperatureF"]) ); 
-    let rectWidth =  d.length / 1400;
+    ex = d.map(element => parseInt(element["Max.TemperatureF"]) ); 
     let height = 500;
+    let width  = 1200;
+    let rectWidth =  width / d.length;
      let svg = d3.select("svg");
+     svg.attr("height", height)
+        .attr("width", width);
   	 svg.selectAll("rect").data(d)
      .enter().append("rect")
-     .attr("x", (d,i) => i * rectWidth)
-     .attr("y", (d, i) => height - ex[i] )
-     .attr("height", 120)
+     .attr("x", (d,i) => 1 + i * rectWidth)
+     .attr("y", (d, i) => height - 3 *ex[i] )
+     .attr("height", (d,i) => (3 * ex[i]))
      .attr("width",rectWidth)
      .attr("fill", "#f0f")
  
