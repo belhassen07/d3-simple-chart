@@ -20,7 +20,7 @@ d3.csv("atlanta.csv", (d) => {
     let yScale = d3.scaleLinear().domain(tempExtent).range([height , 0]);
     let yAxis = d3.axisLeft(yScale);  
     let xAxis = d3.axisBottom(xScale).tickFormat((d) =>
-    ` ${(new Date(d)).getMonth() + 1} / ${(new Date(d)).getFullYear()} ` ) ;
+    d3.timeFormat("%b %Y ")(new Date(d)) ) ;
     let svg = d3.select("svg");
     svg.append("g") 
      .attr("transform", `translate(${margin.left - 1}  , 0)`)
